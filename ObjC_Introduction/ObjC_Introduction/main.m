@@ -8,64 +8,47 @@
 
 #import <Foundation/Foundation.h>
 
-int getAverage(int a, int b, int c) {
-    
-    int result;
-    
-    if(a>=b && a<=c) {
-        result = a;
-    } else if (b>=a && b<=c) {
-        result = b;
-    } else {
-        result = c;
+BOOL isLatin(char a) {
+    if(a >= 'A' && a <='z') {
+        return YES;
     }
-    return result;
+    return NO;
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int subtract(int a, int b) {
+    return a - b;
+}
+
+int multiply(int a, int b) {
+    return a * b;
+}
+
+int divide(int a, int b) {
+    return a / b;
+}
+
+int divisionRemainder(int a, int b) {
+    return a % b;
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        int x, y, z=0;
-        char operation='+';
+        int a = 5;
+        int b = 8;
         
-        while(operation != '0') {
-            printf("Operation (+, -, *, /, %%, A (for average))\n or 0 - to exit: ");
-            scanf("%s", &operation);
-            if (operation == '0') { break; }
-            if (operation == '+' || operation == '-' || operation == '*' || operation == '/' || operation == '%' || operation == 'A') {
-                printf("First number: ");
-                scanf("%d", &x);
-                printf("Second number: ");
-                scanf("%d", &y);
-                if(operation == 'A') {
-                    printf("Fird number: ");
-                    scanf("%d", &z);
-                }
-                switch (operation) {
-                    case '+':
-                        NSLog(@"%d + %d = %d", x, y, x+y);
-                        break;
-                    case '-':
-                        NSLog(@"%d - %d = %d", x, y, x-y);
-                        break;
-                    case '*':
-                        NSLog(@"%d * %d = %d", x, y, x*y);
-                        break;
-                    case '/':
-                        if (y != 0) NSLog(@"%d / %d = %d", x, y, x/y);
-                        else NSLog(@"Division by zero!");
-                        break;
-                    case '%':
-                        if (y != 0) NSLog(@"%d %% %d = %d", x, y, x%y);
-                        else NSLog(@"Division by zero!");
-                        break;
-                    case 'A':
-                        NSLog(@"Average of %d, %d, %d is %d", x, y, z, getAverage(x,y,z));
-                        break;
-                }
-            } else {
-                    NSLog(@"Unknown operation!");
-            }
-        }
+        NSLog(@"%i + %i = %i", a, b, add(a,b));
+        NSLog(@"%i - %i = %i", a, b, subtract(a,b));
+        NSLog(@"%i * %i = %i", a, b, multiply(a,b));
+        NSLog(@"%i / %i = %i", a, b, divide(a,b));
+        NSLog(@"%i %% %i = %i", a, b, divisionRemainder(a,b));
+        
+        NSLog(@"h is Latin: %s", isLatin('h') ? "YES" :"NO");
+        NSLog(@"F is Latin: %s", isLatin('F') ? "YES" :"NO");
+        NSLog(@"8 is Latin: %s", isLatin('8') ? "YES" :"NO");
     }
     return 0;
 }
