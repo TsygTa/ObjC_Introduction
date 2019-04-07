@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 BOOL isLatin(char a) {
-    if(a >= 'A' && a <='z') {
+    if((a >= 'A' && a <='Z') || (a >= 'a' && a <='z')) {
         return YES;
     }
     return NO;
@@ -49,6 +49,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"h is Latin: %s", isLatin('h') ? "YES" :"NO");
         NSLog(@"F is Latin: %s", isLatin('F') ? "YES" :"NO");
         NSLog(@"8 is Latin: %s", isLatin('8') ? "YES" :"NO");
+        NSLog(@"/ is Latin: %s", isLatin('/') ? "YES" :"NO");
     }
     return 0;
 }
